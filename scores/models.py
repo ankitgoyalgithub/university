@@ -2,26 +2,24 @@ import uuid
 
 from django.db import models
 
-from courses.models import Course
+from exams.models import Exam
 from students.models import Student
 
 
-class Enrollment(models.Model):
+class Score(models.Model):
     id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
     student = models.ForeignKey(
         Student,
-        related_name="student_enrollments",
+        related_name="students_scores",
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
     )
-    course = models.ForeignKey(
-        Course,
-        related_name="course_enrollments",
+    exam = models.ForeignKey(
+        Exam,
+        related_name="exams_scores",
         on_delete=models.SET_NULL,
         null=True,
         blank=True,
     )
-
-    def __str__(self):
-        return self.name
+    score_obtained = models.FloatField(default=0.0)
