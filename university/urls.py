@@ -20,6 +20,10 @@ from django.urls import path
 
 v1_urls = [
     path("students/", include("students.urls")),
+    path("courses/", include("courses.urls")),
+    path("exams/", include("exams.urls")),
+    path("instructors/", include("instructors.urls")),
+    path("enrollments/", include("enrollments.urls")),
 ]
 
 urlpatterns = [
